@@ -167,6 +167,8 @@ bool UglTFRuntimeSTLFunctionLibrary::LoadSTLAsRuntimeLOD(UglTFRuntimeAsset* Asse
 
 	const TArray64<uint8>& Blob = Asset->GetParser()->GetBlob();
 
+	RuntimeLOD.Empty();
+
 	FglTFRuntimePrimitive Primitive;
 
 	if (!glTFRuntimeSTL::LoadToPrimitive(Blob, Asset, Primitive, Material, STLFileMode))
