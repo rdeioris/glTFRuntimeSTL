@@ -29,6 +29,9 @@ void AglTFRuntimeSTLAssetActorAsync::BeginPlay()
 	AddInstanceComponent(StaticMeshComponent);
 	MeshesToLoad.Add(StaticMeshComponent);
 
+	StaticMeshComponent->ComponentTags.Add(TEXT("glTFRuntime:NodeName:solid"));
+	StaticMeshComponent->ComponentTags.Add(TEXT("glTFRuntime:Format:STL"));
+
 	if (MeshesToLoad.Num() == 0)
 	{
 		ReceiveOnScenesLoaded();

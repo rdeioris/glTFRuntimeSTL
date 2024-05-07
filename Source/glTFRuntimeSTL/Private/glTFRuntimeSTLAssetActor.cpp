@@ -31,6 +31,9 @@ void AglTFRuntimeSTLAssetActor::BeginPlay()
 		StaticMeshComponent->RegisterComponent();
 		AddInstanceComponent(StaticMeshComponent);
 
+		StaticMeshComponent->ComponentTags.Add(TEXT("glTFRuntime:NodeName:solid"));
+		StaticMeshComponent->ComponentTags.Add(TEXT("glTFRuntime:Format:STL"));
+
 		UStaticMesh* StaticMesh = Asset->LoadStaticMeshFromRuntimeLODs({ LOD }, StaticMeshConfig);
 		if (StaticMesh)
 		{

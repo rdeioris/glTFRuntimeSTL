@@ -1,7 +1,13 @@
-// Copyright 2023 Roberto De Ioris.
+// Copyright 2023-2024 Roberto De Ioris.
 
 
 #include "glTFRuntimeSTLFunctionLibrary.h"
+#include "Runtime/Launch/Resources/Version.h"
+#if ENGINE_MAJOR_VERSION >= 5 && ENGINE_MINOR_VERSION >= 2
+#include "MaterialDomain.h"
+#else
+#include "MaterialShared.h"
+#endif
 
 namespace glTFRuntimeSTL
 {
@@ -151,7 +157,7 @@ namespace glTFRuntimeSTL
 		Primitive.Material = Material;
 		if (!Primitive.Material)
 		{
-			Primitive.Material = UMaterial::GetDefaultMaterial(MD_Surface);
+			Primitive.Material = UMaterial::GetDefaultMaterial(EMaterialDomain::MD_Surface);
 		}
 
 		return true;
