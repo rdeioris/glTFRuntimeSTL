@@ -27,6 +27,10 @@ void AglTFRuntimeSTLAssetActor::BeginPlay()
 	if (UglTFRuntimeSTLFunctionLibrary::LoadSTLAsRuntimeLOD(Asset, nullptr, EglTFRuntimeSTLFileMode::Auto, LOD))
 	{
 		UStaticMeshComponent* StaticMeshComponent = NewObject<UStaticMeshComponent>(this);
+		if (StaticMeshConfig.Outer == nullptr)
+		{
+			StaticMeshConfig.Outer = StaticMeshComponent;
+		}
 		StaticMeshComponent->SetupAttachment(GetRootComponent());
 		StaticMeshComponent->RegisterComponent();
 		AddInstanceComponent(StaticMeshComponent);

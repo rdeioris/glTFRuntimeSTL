@@ -24,6 +24,10 @@ void AglTFRuntimeSTLAssetActorAsync::BeginPlay()
 	}
 
 	UStaticMeshComponent* StaticMeshComponent = NewObject<UStaticMeshComponent>(this, MakeUniqueObjectName(this, UStaticMeshComponent::StaticClass()));
+	if (StaticMeshConfig.Outer == nullptr)
+	{
+		StaticMeshConfig.Outer = StaticMeshComponent;
+	}
 	StaticMeshComponent->SetupAttachment(GetRootComponent());
 	StaticMeshComponent->RegisterComponent();
 	AddInstanceComponent(StaticMeshComponent);
